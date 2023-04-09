@@ -10,7 +10,7 @@ import image3 from './assets/profile3.jpg';
 import image4 from './assets/profile4.jpg';
 import './App.css';
 function App() {
-  const canvasRef = useRef(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const [formData, setFormData] = useState<FormDataType>({
     name: "",
@@ -25,6 +25,7 @@ function App() {
   });
 
   const [iconImage, setIconImage] = useState<string>("");
+  const [imageUrl, setImageUrl] = useState<string>("");
 
   const [selectImage, setSelectImage] = useState<string>(image1);
 
@@ -102,21 +103,27 @@ function App() {
     window.location.reload();
     };
 
-  //画像を保存
+  //保存用画像を作成
   const handleCanvasSave = () => {
-    const canvas: any = canvasRef.current;
-    const dataURL = canvas.toDataURL('image/png');
-    const link = document.createElement('a');
-    link.href = dataURL;
-    link.download = 'card.png';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    const canvas = canvasRef.current;
+    if (canvas) {
+      canvas.toBlob((blob: Blob | null) => {
+        if (blob) {
+          const url = URL.createObjectURL(blob);
+          setImageUrl(url);
+        }
+      });
+    }
   };
 
   return (
     <div className='wrapper'>
       <TItle />
+      <Canvas canvasRef={canvasRef}  imageUrl={imageUrl}/>
+      <Button
+        handleCanvasClear={handleCanvasClear}
+        handleCanvasSave={handleCanvasSave}
+      />
       <Form
         form={formData}
         images={images}
@@ -126,11 +133,6 @@ function App() {
         handleTextAreaChange={handleTextAreaChange}
         handleImageChange={handleImageChange}
       />
-      <Button
-        handleCanvasClear={handleCanvasClear}
-        handleCanvasSave={handleCanvasSave}
-      />
-      <Canvas canvasRef={canvasRef} />
     </div>
   );
 }

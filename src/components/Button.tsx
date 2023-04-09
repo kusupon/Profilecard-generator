@@ -3,7 +3,7 @@ const Button = ({ handleCanvasClear, handleCanvasSave }: HandleCanvasType) => {
     return (
         <>
             <button onClick={handleCanvasClear}>リセット</button>
-            <button onClick={handleCanvasSave}>保存</button>
+            <button onClick={handleCanvasSave}>保存用画像を作成(スマホ用)</button>
         </>
     )
 }

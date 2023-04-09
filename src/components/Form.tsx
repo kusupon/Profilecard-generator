@@ -3,7 +3,7 @@ const Form = ({ form, images, setSelectImage, handleInputChange, handleSelectCha
     return (
         <div className='form'>
             <div className='inputArea'>
-                <div className='formContent'><label>アイコン</label><input type="file" accept="image/*" onChange={handleImageChange} /></div>
+                <div className='formContent'>アイコン<label className="file">画像を選択<input type="file" accept="image/*" onChange={handleImageChange}/></label></div>
                 <div className='formContent'><label>名前</label><input type="text" value={form.name} onChange={handleInputChange} name="name" /></div>
                 <div className='formContent'><label>学年</label><input type="text" value={form.grade} onChange={handleInputChange} name="grade" /></div>
                 <div className='formContent'><label>性別</label><input type="text" value={form.gender} onChange={handleInputChange} name="gender" /></div>
@@ -20,7 +20,7 @@ const Form = ({ form, images, setSelectImage, handleInputChange, handleSelectCha
                         </div>
                     ))}
                 </div>
-                <div className='formContent'><label>フリースペース</label><textarea value={form.freespace} cols={20} rows={4} onChange={handleTextAreaChange} name="freespace" /></div>
+                <div className='formContent'><label>フリースペース</label><textarea value={form.freespace} cols={40} rows={4} onChange={handleTextAreaChange} name="freespace" /></div>
                 <div className='formContent'>
                     <label className='color'>色を選択</label>
                     <select onChange={(e) => setSelectImage(e.target.value)}>

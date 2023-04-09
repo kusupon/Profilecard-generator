@@ -9,17 +9,25 @@ body {
   height: 100%;
 }
 
+.container .image {
+  width: 100%;
+  height: 100%;
+}
 
 .formContent {
   padding: 15px;
   margin: 10px 5px;
-  background-color: rgb(200, 200, 200);
-  border-radius: 10px;
+  border-bottom: 1px solid black;
 }
 
 .wrapper {
   width: 600px;
   margin: 0 auto;
+}
+
+.title {
+  padding-bottom: 3px;
+  border-bottom: 1px black solid;
 }
 
 @media screen and (max-width: 480px){
@@ -30,7 +38,7 @@ body {
 
 
 button {
-  background-color: rgb(185, 253, 230);
+  color: #000;
   border: none;
   padding: 20px;
   margin: 10px 5px;
@@ -42,24 +50,46 @@ label {
 }
 
 input {
-  padding: 10px 20px;
-  border-radius: 10px;
-  margin-left: 10px;
+  width: 100%;
+  padding: 10px 0;
   border: none;
+  font-size: 20px;
 }
+
+input[type="file"] {
+  display: none;
+}
+
+.file {
+  font-size: 15px;
+  margin-left: 20px;
+  padding: 10px 10px;
+  background-color: rgb(242, 242, 242);
+  border-radius: 10px;
+}
+
+input label {
+  position: absolute;
+  bottom: 5px;
+}
+
 
 select {
+  color: #000;
+  background-color: rgb(252, 252, 252);
+  appearance: none;
   border-radius: 10px;
-  border: none;
   margin: 0 20px;
-  padding: 10px;
+  padding: 10px 30px 10px 5px;
+  border: 1px solid black;
 }
 
+
 textarea {
+  width: 100%;
   border: none;
   border-radius: 10px;
   vertical-align: middle;
-  margin-left: 10px;
   resize: none;
   padding: 5px;
   resize: "vertical"
@@ -74,6 +104,10 @@ h1 {
 .selector {
   padding-top: 10px;
 }
+
+
+
+
 
 @media screen and (min-width: 480px){
   .selector {
