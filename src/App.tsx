@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Canvas from './components/Canvas';
 import TItle from './components/Title';
 import Form from './components/Form';
@@ -9,8 +9,6 @@ import image2 from './assets/profile2.jpg';
 import image3 from './assets/profile3.jpg';
 import image4 from './assets/profile4.jpg';
 import './App.css';
-
-
 function App() {
   const canvasRef = useRef(null);
 
@@ -25,6 +23,8 @@ function App() {
     colorSelect: "",
     freespace: "",
   });
+
+  const [iconImage, setIconImage] = useState<string>("");
 
   const [selectImage, setSelectImage] = useState<string>(image1);
 
@@ -41,6 +41,14 @@ const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
 const handleTextAreaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
   const { name, value } = e.target;
   setFormData({ ...formData, [name]: value });
+};
+
+const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const fileObject = e.target.files?.[0];
+  if (fileObject) {
+    const url = URL.createObjectURL(fileObject);
+    setIconImage(url);
+  }
 };
 
 
@@ -67,23 +75,26 @@ const images = [
       const canvas:any = canvasRef.current;
       const ctx = canvas.getContext('2d');
       const img = new Image();
-      img.src = selectImage
-      img.onload = () => {
+      const formImg = new Image();
+      img.src = selectImage;
+      formImg.src = iconImage;
+        img.onload = () => {
           ctx.drawImage(img, 0, 0);
+          ctx.drawImage(formImg, 835, 355, 450, 450);
           ctx.font = 'bold 50px Arial';
           ctx.fillStyle = 'black';
           ctx.fillText(formData.name, 190, 385);
           ctx.fillText(formData.grade, 190, 495);
           ctx.fillText(formData.gender, 190, 605);
           ctx.fillText(formData.birthday, 230, 720);
-          ctx.fillText(formData.freespace, 70, 1150)
+          ctx.fillText(formData.freespace, 70, 1150);
           ctx.font = '200px Arial';
           ctx.fillStyle = 'red';
           ctx.fillText(formData.dmSelect, 770, 975);
           ctx.fillText(formData.lineSelect, 920, 975);
           ctx.fillText(formData.instagramSelect, 1120, 975);
-      };
-  };
+        };
+    };
 
   //canvasをクリアする
   const handleCanvasClear = () => {
@@ -99,8 +110,9 @@ const images = [
           lineSelect: "",
           instagramSelect: "",
           colorSelect: "",
-          freespace: ""
+          freespace: "",
       });
+      setIconImage("");
   };
 
   //画像を保存
@@ -125,6 +137,7 @@ const images = [
         handleInputChange={handleInputChange}
         handleSelectChange={handleSelectChange}
         handleTextAreaChange={handleTextAreaChange}
+        handleImageChange={handleImageChange}
       />
       <Button 
         handleCanvasDraw={handleCanvasDraw}
