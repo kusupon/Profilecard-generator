@@ -25,7 +25,6 @@ export type FormHandletype = {
 }
 
 export type HandleCanvasType = {
-    handleCanvasDraw: () => void;
     handleCanvasClear:() => void;
     handleCanvasSave: () => void;
 }

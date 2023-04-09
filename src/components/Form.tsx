@@ -3,11 +3,11 @@ const Form = ({ form, images, setSelectImage, handleInputChange, handleSelectCha
     return (
         <div className='form'>
             <div className='inputArea'>
+                <div className='formContent'><label>アイコン</label><input type="file" accept="image/*" onChange={handleImageChange} /></div>
                 <div className='formContent'><label>名前</label><input type="text" value={form.name} onChange={handleInputChange} name="name" /></div>
                 <div className='formContent'><label>学年</label><input type="text" value={form.grade} onChange={handleInputChange} name="grade" /></div>
                 <div className='formContent'><label>性別</label><input type="text" value={form.gender} onChange={handleInputChange} name="gender" /></div>
                 <div className='formContent'><label>誕生日</label><input type="text" value={form.birthday} onChange={handleInputChange} name="birthday" /></div>
-                <div className='formContent'><label>アイコン</label><input type="file" accept="image/*" onChange={handleImageChange}  /></div> 
                 <div className='formContent'>
                     {['DM', 'LINE', 'Instagram'].map((label) => (
                         <div className="selector" key={label}>
