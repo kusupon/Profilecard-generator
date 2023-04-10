@@ -79,8 +79,8 @@ select {
   background-color: rgb(252, 252, 252);
   appearance: none;
   border-radius: 10px;
-  margin: 0 20px;
-  padding: 10px 30px 10px 5px;
+  margin: 5px 20px;
+  padding: 10px 10px 10px 5px;
   border: 1px solid black;
 }
 
@@ -103,14 +103,5 @@ h1 {
 
 .selector {
   padding-top: 10px;
-}
-
-
-
-
-
-@media screen and (min-width: 480px){
-  .selector {
-    display: inline;
-  }
+  display: inline;
 }

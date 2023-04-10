@@ -13,7 +13,7 @@ const Form = ({ form, images, setSelectImage, handleInputChange, handleSelectCha
                         <div className="selector" key={label}>
                             <label>{label}</label>
                             <select onChange={handleSelectChange} name={`${label.toLowerCase()}Select`}>
-                                <option value="">選択</option>
+                                <option value="">選択 ▼</option>
                                 <option value="○">○</option>
                                 <option value="x">x</option>
                             </select>
