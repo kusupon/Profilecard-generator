@@ -18,6 +18,7 @@ body {
   padding: 15px;
   margin: 10px 5px;
   border-bottom: 1px solid black;
+
 }
 
 .wrapper {
@@ -60,6 +61,15 @@ input[type="file"] {
   display: none;
 }
 
+input[type="color"] {
+  padding: 0;
+  width: 25%;
+  background-color: #ffffff;
+}
+
+
+
+
 .file {
   font-size: 15px;
   margin-left: 20px;
@@ -67,12 +77,6 @@ input[type="file"] {
   background-color: rgb(242, 242, 242);
   border-radius: 10px;
 }
-
-input label {
-  position: absolute;
-  bottom: 5px;
-}
-
 
 select {
   color: #000;

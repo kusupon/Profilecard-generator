@@ -8,16 +8,11 @@ export type FormDataType = {
     instagramSelect: string
     colorSelect: string
     freespace: string
-
+    color: string
   }
 
 export type FormHandletype = {
     form: FormDataType
-    images: {
-        url: any;
-        label: string;
-    }[]
-    setSelectImage: React.Dispatch<React.SetStateAction<string>>
     handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void
     handleSelectChange: (e: React.ChangeEvent<HTMLSelectElement>) => void
     handleTextAreaChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void

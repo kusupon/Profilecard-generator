@@ -4,10 +4,6 @@ import TItle from './components/Title';
 import Form from './components/Form';
 import Button from './components/Button';
 import { FormDataType } from './types/types';
-import image1 from './assets/profile1.jpg';
-import image2 from './assets/profile2.jpg';
-import image3 from './assets/profile3.jpg';
-import image4 from './assets/profile4.jpg';
 import './App.css';
 function App() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -22,12 +18,11 @@ function App() {
     instagramSelect: "",
     colorSelect: "",
     freespace: "",
+    color: "#CCF7FF"
   });
 
   const [iconImage, setIconImage] = useState<string>("");
   const [imageUrl, setImageUrl] = useState<string>("");
-
-  const [selectImage, setSelectImage] = useState<string>(image1);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -52,51 +47,47 @@ function App() {
     }
   };
 
-
-  const images = [
-    {
-      url: image1,
-      label: "青",
-    },
-    {
-      url: image2,
-      label: "ピンク",
-    },
-    {
-      url: image3,
-      label: "オレンジ",
-    },
-    {
-      url: image4,
-      label: "緑",
-    },
-  ];
-
-
   useEffect(() => {
     const canvas: any = canvasRef.current;
     const ctx = canvas.getContext('2d');
     const img = new Image();
-    const formImg = new Image();
-    img.src = selectImage;
-    img.onload = () => {
-      ctx.drawImage(img, 0, 0);
-      ctx.drawImage(formImg, 835, 355, 450, 450);
+    img.src = iconImage;
+    ctx.fillStyle = formData.color;
+      ctx.fillRect(0,0, 1400, 1400);
+      ctx.fillStyle = formData.color;
+      ctx.drawImage(img, 835, 355, 450, 450);
+      ctx.font = '40px Arial';
+      ctx.fillStyle = 'black';
+      ctx.fillText('名前:', 80,385);
+      ctx.fillText('学年:', 80, 500);
+      ctx.fillText('性別:', 80,600);
+      ctx.fillText('誕生日:', 80, 720);
+      ctx.font = '50px Arial';
+      ctx.fillStyle = 'black';
+      ctx.fillText('DM / LINE / Instagram', 790, 935)
+      ctx.font = '110px Arial'
+      ctx.fillStyle = 'black'
+      ctx.fillText('N/S Profile', 680, 200);
+      ctx.font = '80px Arial';
+      ctx.fillStyle = 'black';
+      ctx.fillText('Free Space', 80, 1060)
       ctx.font = 'bold 50px Arial';
       ctx.fillStyle = 'black';
       ctx.fillText(formData.name, 190, 385);
+      ctx.fillText('ーーーーーーーーーー', 80, 430);
+      ctx.fillText('ーーーーーーーーーー', 80, 550);
+      ctx.fillText('ーーーーーーーーーー', 80, 650);
+      ctx.fillText('ーーーーーーーーーー', 80, 770);
       ctx.fillText(formData.grade, 190, 495);
       ctx.fillText(formData.gender, 190, 605);
       ctx.fillText(formData.birthday, 230, 720);
       ctx.fillText(formData.freespace, 70, 1150);
-      ctx.font = '200px Arial';
+      ctx.font = '180px Arial';
       ctx.fillStyle = 'red';
       ctx.fillText(formData.dmSelect, 770, 975);
       ctx.fillText(formData.lineSelect, 920, 975);
       ctx.fillText(formData.instagramSelect, 1120, 975);
-    };
-    formImg.src = iconImage;
-  }, [formData, iconImage, selectImage]);
+  }, [formData, iconImage]);
 
   //canvasをクリアする
   const handleCanvasClear = () => {
@@ -126,8 +117,6 @@ function App() {
       />
       <Form
         form={formData}
-        images={images}
-        setSelectImage={setSelectImage}
         handleInputChange={handleInputChange}
         handleSelectChange={handleSelectChange}
         handleTextAreaChange={handleTextAreaChange}
