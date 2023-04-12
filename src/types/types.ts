@@ -9,6 +9,7 @@ export type FormDataType = {
     colorSelect: string
     freespace: string
     color: string
+    fontColor: string
   }
 
 export type FormHandletype = {

@@ -18,7 +18,8 @@ function App() {
     instagramSelect: "",
     colorSelect: "",
     freespace: "",
-    color: "#CCF7FF"
+    color: "#CCF7FF",
+    fontColor: "#000"
   });
 
   const [iconImage, setIconImage] = useState<string>("");
@@ -47,7 +48,6 @@ function App() {
     }
     ctx.fillStyle = formData.color;
     ctx.fillRect(0,0, 1400, 1400);
-    ctx.fillStyle = formData.color;
     ctx.font = '40px Arial';
     ctx.fillStyle = 'black';
     ctx.fillText('名前:', 80,385);
@@ -69,13 +69,14 @@ function App() {
     ctx.fillText('ーーーーーーーーーー', 80, 550);
     ctx.fillText('ーーーーーーーーーー', 80, 650);
     ctx.fillText('ーーーーーーーーーー', 80, 770);
+    ctx.fillStyle = formData.fontColor;
     ctx.fillText(formData.name, 190, 385);
     ctx.fillText(formData.grade, 190, 495);
     ctx.fillText(formData.gender, 190, 605);
     ctx.fillText(formData.birthday, 230, 720);
     ctx.fillText(formData.freespace, 70, 1150);
     ctx.font = '80px Arial';
-    ctx.fillStyle = 'red';
+    ctx.fillStyle = 'formData.fontColor';
     ctx.fillText(formData.dmSelect, 790, 945);
     ctx.fillText(formData.lineSelect, 930, 950);
     ctx.fillText(formData.instagramSelect, 1120, 955);
