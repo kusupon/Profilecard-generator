@@ -24,20 +24,10 @@ function App() {
   const [iconImage, setIconImage] = useState<string>("");
   const [imageUrl, setImageUrl] = useState<string>("");
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFieldChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleTextAreaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+  };  
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const fileObject = e.target.files?.[0];
@@ -52,48 +42,45 @@ function App() {
     const ctx = canvas.getContext('2d');
     const img = new Image();
     img.src = iconImage;
-    ctx.fillStyle = formData.color;
-      ctx.fillRect(0,0, 1400, 1400);
-      ctx.fillStyle = formData.color;
+    img.onload = () => {
       ctx.drawImage(img, 835, 355, 450, 450);
-      ctx.font = '40px Arial';
-      ctx.fillStyle = 'black';
-      ctx.fillText('名前:', 80,385);
-      ctx.fillText('学年:', 80, 500);
-      ctx.fillText('性別:', 80,600);
-      ctx.fillText('誕生日:', 80, 720);
-      ctx.font = '50px Arial';
-      ctx.fillStyle = 'black';
-      ctx.fillText('DM / LINE / Instagram', 790, 935)
-      ctx.font = '110px Arial'
-      ctx.fillStyle = 'black'
-      ctx.fillText('N/S Profile', 680, 200);
-      ctx.font = '80px Arial';
-      ctx.fillStyle = 'black';
-      ctx.fillText('Free Space', 80, 1060)
-      ctx.font = 'bold 50px Arial';
-      ctx.fillStyle = 'black';
-      ctx.fillText(formData.name, 190, 385);
-      ctx.fillText('ーーーーーーーーーー', 80, 430);
-      ctx.fillText('ーーーーーーーーーー', 80, 550);
-      ctx.fillText('ーーーーーーーーーー', 80, 650);
-      ctx.fillText('ーーーーーーーーーー', 80, 770);
-      ctx.fillText(formData.grade, 190, 495);
-      ctx.fillText(formData.gender, 190, 605);
-      ctx.fillText(formData.birthday, 230, 720);
-      ctx.fillText(formData.freespace, 70, 1150);
-      ctx.font = '180px Arial';
-      ctx.fillStyle = 'red';
-      ctx.fillText(formData.dmSelect, 770, 975);
-      ctx.fillText(formData.lineSelect, 920, 975);
-      ctx.fillText(formData.instagramSelect, 1120, 975);
+    }
+    ctx.fillStyle = formData.color;
+    ctx.fillRect(0,0, 1400, 1400);
+    ctx.fillStyle = formData.color;
+    ctx.font = '40px Arial';
+    ctx.fillStyle = 'black';
+    ctx.fillText('名前:', 80,385);
+    ctx.fillText('学年:', 80, 500);
+    ctx.fillText('性別:', 80,600);
+    ctx.fillText('誕生日:', 80, 720);
+    ctx.font = '50px Arial';
+    ctx.fillStyle = 'black';
+    ctx.fillText('DM / LINE / Instagram', 790, 935)
+    ctx.font = '110px Arial'
+    ctx.fillStyle = 'black'
+    ctx.fillText('N/S Profile', 680, 200);
+    ctx.font = '80px Arial';
+    ctx.fillStyle = 'black';
+    ctx.fillText('Free Space', 80, 1060)
+    ctx.font = '50px Arial';
+    ctx.fillStyle = 'black white-space:pre-wrap';
+    ctx.fillText('ーーーーーーーーーー', 80, 430);
+    ctx.fillText('ーーーーーーーーーー', 80, 550);
+    ctx.fillText('ーーーーーーーーーー', 80, 650);
+    ctx.fillText('ーーーーーーーーーー', 80, 770);
+    ctx.fillText(formData.name, 190, 385);
+    ctx.fillText(formData.grade, 190, 495);
+    ctx.fillText(formData.gender, 190, 605);
+    ctx.fillText(formData.birthday, 230, 720);
+    ctx.fillText(formData.freespace, 70, 1150);
+    ctx.font = '100px Arial';
+    ctx.fillStyle = 'red';
+    ctx.fillText(formData.dmSelect, 770, 975);
+    ctx.fillText(formData.lineSelect, 920, 975);
+    ctx.fillText(formData.instagramSelect, 1120, 975);
   }, [formData, iconImage]);
-
-  //canvasをクリアする
-  const handleCanvasClear = () => {
-    window.location.reload();
-    };
-
+  
   //保存用画像を作成
   const handleCanvasSave = () => {
     const canvas = canvasRef.current;
@@ -112,14 +99,11 @@ function App() {
       <TItle />
       <Canvas canvasRef={canvasRef}  imageUrl={imageUrl}/>
       <Button
-        handleCanvasClear={handleCanvasClear}
         handleCanvasSave={handleCanvasSave}
       />
       <Form
         form={formData}
-        handleInputChange={handleInputChange}
-        handleSelectChange={handleSelectChange}
-        handleTextAreaChange={handleTextAreaChange}
+        handleFieldChange={handleFieldChange}
         handleImageChange={handleImageChange}
       />
     </div>

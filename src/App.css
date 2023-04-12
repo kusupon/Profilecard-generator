@@ -96,7 +96,7 @@ textarea {
   vertical-align: middle;
   resize: none;
   padding: 5px;
-  resize: "vertical"
+  resize: "vertical";
 }
 
 h1 {

@@ -13,13 +13,10 @@ export type FormDataType = {
 
 export type FormHandletype = {
     form: FormDataType
-    handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-    handleSelectChange: (e: React.ChangeEvent<HTMLSelectElement>) => void
-    handleTextAreaChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void
+    handleFieldChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void
     handleImageChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 export type HandleCanvasType = {
-    handleCanvasClear:() => void;
     handleCanvasSave: () => void;
 }
