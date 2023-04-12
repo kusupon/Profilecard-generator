@@ -14,8 +14,8 @@ const Form = ({ form, handleFieldChange, handleImageChange }: FormHandletype) =>
                             <label>{label}</label>
                             <select onChange={handleFieldChange} name={`${label.toLowerCase()}Select`}>
                                 <option value="">選択 ▼</option>
-                                <option value="⭕️">○</option>
-                                <option value="❌">x</option>
+                                <option value="◯">○</option>
+                                <option value="X">x</option>
                             </select>
                         </div>
                     ))}

@@ -64,7 +64,7 @@ function App() {
     ctx.fillStyle = 'black';
     ctx.fillText('Free Space', 80, 1060)
     ctx.font = '50px Arial';
-    ctx.fillStyle = 'black white-space:pre-wrap';
+    ctx.fillStyle = 'black';
     ctx.fillText('ーーーーーーーーーー', 80, 430);
     ctx.fillText('ーーーーーーーーーー', 80, 550);
     ctx.fillText('ーーーーーーーーーー', 80, 650);
@@ -74,11 +74,11 @@ function App() {
     ctx.fillText(formData.gender, 190, 605);
     ctx.fillText(formData.birthday, 230, 720);
     ctx.fillText(formData.freespace, 70, 1150);
-    ctx.font = '100px Arial';
+    ctx.font = '80px Arial';
     ctx.fillStyle = 'red';
-    ctx.fillText(formData.dmSelect, 770, 975);
-    ctx.fillText(formData.lineSelect, 920, 975);
-    ctx.fillText(formData.instagramSelect, 1120, 975);
+    ctx.fillText(formData.dmSelect, 790, 945);
+    ctx.fillText(formData.lineSelect, 930, 950);
+    ctx.fillText(formData.instagramSelect, 1120, 955);
   }, [formData, iconImage]);
   
   //保存用画像を作成
